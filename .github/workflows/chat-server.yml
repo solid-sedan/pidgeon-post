@@ -4,9 +4,19 @@
 # for simplicity we are compiling and testing everything on the Ubuntu environment only.
 # For multi-OS testing see the `cross.yml` workflow.
 
-on: [push, pull_request]
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+    branches:
+      - main
+  push:
+    branches:
+      - main
 
-name: Quickstart
+name: Chat Server
 
 jobs:
   check:
@@ -27,6 +37,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: check
+          args: --manifest-path chat-server/Cargo.toml
 
   test:
     name: Test Suite
@@ -44,9 +55,9 @@ jobs:
 
       - name: Run cargo test
         uses: actions-rs/cargo@v1
-        continue-on-error: true  # WARNING: only for this example, remove it!
         with:
           command: test
+          args: --manifest-path chat-server/Cargo.toml
 
   lints:
     name: Lints
@@ -67,10 +78,10 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: --all -- --check
+          args: --manifest-path chat-server/Cargo.toml --all -- --check
 
       - name: Run cargo clippy
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: -- -D warnings
+          args: --manifest-path chat-server/Cargo.toml -- -D warnings 
