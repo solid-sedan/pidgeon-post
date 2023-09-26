@@ -4,7 +4,17 @@
 # for simplicity we are compiling and testing everything on the Ubuntu environment only.
 # For multi-OS testing see the `cross.yml` workflow.
 
-on: [push, pull_request]
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+    branches:
+      - main
+  push:
+    branches:
+      - main
 
 name: Chat Server
 
@@ -74,4 +84,4 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: -- -D warnings --manifest-path chat-server/Cargo.toml
+          args: --manifest-path chat-server/Cargo.toml -- -D warnings 
