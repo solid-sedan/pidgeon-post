@@ -1,0 +1,8 @@
+branches:
+  - name: main
+    protection:
+      required_status_checks:
+        contexts:
+          - lint-pr
+          - quickstart
+      required_linear_history: true
