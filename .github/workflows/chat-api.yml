@@ -84,4 +84,4 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --manifest-path chat-api/Cargo.toml -D warnings 
+          args: --manifest-path chat-api/Cargo.toml -- -D warnings 
