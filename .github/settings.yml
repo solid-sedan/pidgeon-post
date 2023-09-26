@@ -4,5 +4,7 @@ branches:
       required_status_checks:
         contexts:
           - lint-pr
-          - quickstart
+          - chat-api
+          - chat-cli
+          - chat-server
       required_linear_history: true
