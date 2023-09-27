@@ -1,6 +1,7 @@
 use tokio::{
-    net::TcpListener, 
-    io::{AsyncWriteExt, BufReader, AsyncBufReadExt}, sync::broadcast,
+    io::{AsyncBufReadExt, AsyncWriteExt, BufReader},
+    net::TcpListener,
+    sync::broadcast,
 };
 
 #[tokio::main]
@@ -17,10 +18,10 @@ async fn main() {
 
         tokio::spawn(async move {
             let (reader, mut writer) = socket.split();
-    
+
             let mut reader = BufReader::new(reader);
             let mut line = String::new();
-        
+
             loop {
                 tokio::select! {
                     result = reader.read_line(&mut line) => {
@@ -43,5 +44,4 @@ async fn main() {
             }
         });
     }
-
 }
