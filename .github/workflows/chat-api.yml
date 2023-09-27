@@ -74,27 +74,11 @@
 #           override: true
 #           components: rustfmt, clippy
 
-<<<<<<< HEAD
-      # - name: Run cargo fmt
-      #   uses: actions-rs/cargo@v1
-      #   with:
-      #     command: fmt
-      #     args: --manifest-path chat-api/Cargo.toml --all -- --check
-=======
-<<<<<<< HEAD
 #       - name: Run cargo fmt
 #         uses: actions-rs/cargo@v1
 #         with:
 #           command: fmt
 #           args: --manifest-path chat-server/Cargo.toml --all -- --check
-=======
-      - name: Run cargo fmt
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --manifest-path chat-api/Cargo.toml --all -- --check
->>>>>>> d2678ff (fix chat-api lint and run cargo fmt)
->>>>>>> 0acf2c5 (fix chat-api lint and run cargo fmt)
 
 #       - name: Run cargo clippy
 #         uses: actions-rs/cargo@v1
