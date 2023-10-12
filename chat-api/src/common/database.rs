@@ -15,5 +15,5 @@ pub async fn connect() -> PgPool {
         .await
         .expect("can't connect to database");
 
-    return pool;
+    pool
 }

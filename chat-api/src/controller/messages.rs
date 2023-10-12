@@ -6,7 +6,7 @@ use anyhow::Result;
 
 use crate::model::messages::Message;
 
-pub async fn ingest_message(_: &PgPool, msg: Message) -> Result<()> {
+pub async fn ingest_message(_: &PgPool, _: Message) -> Result<()> {
     println!("Ingesting message");
     Ok(())
 }
