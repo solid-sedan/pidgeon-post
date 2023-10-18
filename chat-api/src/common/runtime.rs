@@ -31,7 +31,7 @@ impl Runtime {
     }
 
     pub async fn server(&self) -> RuntimeResult<Runtime> {
-        let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+        let addr = SocketAddr::from(([0, 0, 0, 0], 3000)); // had to use 0.0.0.0 for docker
         let database_connection = database::connect().await; 
         
         Ok(Runtime {
@@ -45,6 +45,8 @@ impl Runtime {
         let app = router::new(dbp).await;
         let svc = app.into_make_service();
         let lst = self.addr.unwrap();
+
+        println!("Listening on {}", lst);
 
         let _ = axum::Server::bind(&lst)
             .serve(svc)

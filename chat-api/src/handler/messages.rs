@@ -14,8 +14,13 @@ use crate::model::messages::Message;
 
 pub fn router() -> Router {
     Router::new()
+        .route("/", get(get_hello_world))
         .route("/messages", get(get_all))
         .route("/messages", post(post_message))
+}
+
+pub async fn get_hello_world() -> &'static str {
+    "Hello, world!"
 }
 
 pub async fn get_all(Extension(pool): Extension<PgPool>) -> impl IntoResponse {
