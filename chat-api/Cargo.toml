@@ -17,3 +17,4 @@ sqlx = { version = "0.7", features = [ "runtime-tokio", "tls-native-tls", "postg
 anyhow = "1.0.75"
 axum-macros = "0.3.8"
 chrono = { version = "0.4.31", features = ["serde"] }
+dotenv = "0.15.0"
